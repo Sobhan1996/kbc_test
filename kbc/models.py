@@ -37,6 +37,7 @@ class KBCModel(nn.Module, ABC):
         :param chunk_size: maximum number of candidates processed at once
         :return:
         """
+        print('s5')
         if chunk_size < 0:
             chunk_size = self.sizes[2]
         ranks = torch.ones(len(queries))

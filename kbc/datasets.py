@@ -51,6 +51,7 @@ class Dataset(object):
             self, model: KBCModel, split: str, n_queries: int = -1, missing_eval: str = 'both',
             at: Tuple[int] = (1, 3, 10)
     ):
+        print('s2')
         test = self.get_examples(split)
         examples = torch.from_numpy(test.astype('int64')).cuda()
         missing = [missing_eval]
@@ -70,6 +71,7 @@ class Dataset(object):
                 q[:, 0] = q[:, 2]
                 q[:, 2] = tmp
                 q[:, 1] += self.n_predicates // 2
+            print('s4')
             ranks = model.get_ranking(q, self.to_skip[m], batch_size=500)
             mean_reciprocal_rank[m] = torch.mean(1. / ranks).item()
             hits_at[m] = torch.FloatTensor((list(map(
