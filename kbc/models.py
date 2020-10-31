@@ -50,6 +50,11 @@ class KBCModel(nn.Module, ABC):
                     q = self.get_queries(these_queries)
 
                     scores = q @ rhs
+                    print(q[0:100])
+                    print('--------------------------')
+                    print(rhs[0:100])
+                    print('-------------------------')
+                    print(scores[0:100])
                     targets = self.score(these_queries)
 
                     # set filtered and true scores to -1e6 to be ignored
